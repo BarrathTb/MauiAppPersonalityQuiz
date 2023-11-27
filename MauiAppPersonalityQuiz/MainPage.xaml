@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiAppPersonalityQuiz"
+             x:Class="MauiAppPersonalityQuiz.MainPage">
+
+    <ScrollView VerticalOptions="FillAndExpand">
+
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Personality Quiz" FontSize="Large" HorizontalOptions="Center" Margin="0,20,0,0" Grid.Row="0"/>
+
+            <StackLayout Margin="0,20,0,20" Grid.Row="1">
+                <Label Text="1. Do you like spending time on the beach?" FontSize="Medium"/>
+                <local:RadioButtonGroup x:Name="question1"  />
+
+            </StackLayout>
+
+
+            <StackLayout Margin="0,20,0,20" Grid.Row="2">
+                <Label Text="2. Do you like hiking in the mountains?" FontSize="Medium"/>
+                <local:RadioButtonGroup x:Name="question2" />
+            </StackLayout>
+
+
+            <StackLayout Margin="0,20,0,20" Grid.Row="3">
+                <Label Text="3. Do you like picnics in the park?" FontSize="Medium"/>
+                <local:RadioButtonGroup x:Name="question3" />
+            </StackLayout>
+
+
+            <StackLayout Margin="0,20,0,20" Grid.Row="4">
+                <Label Text="4. Do you like to sit outside and relax?" FontSize="Medium"/>
+                <local:RadioButtonGroup x:Name="question4" />
+            </StackLayout>
+
+            <CollectionView x:Name="resultImages" ItemsSource="{Binding ImageSources}" HeightRequest="200" WidthRequest="200" Margin="0,20,0,0" Grid.Row="5">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Submit" Clicked="OnSubmitClicked" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="6" Grid.Column="0"/>
+            <Button Text="  Reset  " Clicked="OnResetClicked" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="6" Grid.Column="1"/>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
